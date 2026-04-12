@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
     <nav class="navbar">
         <div class="nav-brand">TaskManager</div>
         <ul class="nav-links">
@@ -24,8 +25,16 @@
 
         <ul id="tasks"></ul>
     </div>
-
+    <section>
+        <input type="email" id="email" placeholder="Correo">
+        <input type="password" id="password" placeholder="Contrasenia">
+        <button id="register-btn">Registrarse</button>
+        <button id="login-btn">Iniciar Sesión</button>
+        <button id="delete-button">Eliminar</button>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/app.js"></script>
+
 </body>
 
 </html>
