@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskManager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -15,26 +18,40 @@
             <li><a href="#">Proyectos</a></li>
             <li><a href="#">Contacto</a></li>
         </ul>
+        <button id="logout-btn" class="logout-btn" style="display: none;">Cerrar Sesión</button>
     </nav>
 
-    <div class="container">
-        <h1>Task Manager LAAO</h1>
+    <div class="main-wrapper">
+        <!-- Pantalla de Login -->
+        <section id="login-screen" class="screen">
+            <div class="glass-container auth-container">
+                <h2>Bienvenido</h2>
+                <p class="subtitle">Inicia sesión o regístrate para continuar</p>
+                <input type="email" id="email" placeholder="Correo electrónico">
+                <input type="password" id="password" placeholder="Contraseña">
+                <div class="auth-buttons">
+                    <button id="login-btn" class="btn-primary">Iniciar Sesión</button>
+                    <button id="register-btn" class="btn-secondary">Registrarse</button>
+                </div>
+            </div>
+        </section>
 
-        <input type="text" placeholder="Nueva tarea">
-        <button>Agregar</button>
-
-        <ul id="tasks"></ul>
+        <!-- Pantalla de Tareas -->
+        <div id="tasks-screen" class="screen" style="display: none;">
+            <div class="glass-container tasks-container">
+                <h1>Tus Tareas</h1>
+                <div class="input-group">
+                    <input type="text" id="new-task-input" placeholder="Escribe una nueva tarea...">
+                    <button id="add-task-btn" class="btn-primary">Agregar</button>
+                </div>
+                <ul id="tasks"></ul>
+            </div>
+        </div>
     </div>
-    <section>
-        <input type="email" id="email" placeholder="Correo">
-        <input type="password" id="password" placeholder="Contrasenia">
-        <button id="register-btn">Registrarse</button>
-        <button id="login-btn">Iniciar Sesión</button>
-        <button id="delete-button">Eliminar</button>
-    </section>
+
+    <!-- Cargar Supabase y la lógica de la app -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/app.js"></script>
-
 </body>
 
 </html>

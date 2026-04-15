@@ -1,100 +1,276 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2B88E0, #667EDE, #A16EE0);
+    background-size: 300% 300%;
+    animation: gradientMove 12s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Navbar */
 .navbar {
-    background-color: #c0c0c0;
-    /* Plata */
-    color: #003366;
-    /* Azul */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px 40px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    z-index: 100;
 }
 
-.navbar .nav-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: #003366;
+.nav-brand {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
-.navbar .nav-links {
+.nav-links {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
-.navbar .nav-links li {
-    margin-top: 0;
-}
-
-.navbar .nav-links a {
+.nav-links a {
     text-decoration: none;
-    color: #003366;
-    font-weight: bold;
-    transition: color 0.3s;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
-.navbar .nav-links a:hover {
-    color: #00509e;
+.nav-links a:hover {
+    color: #ffffff;
 }
 
-/* Container de la app */
-.container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Auth / Tasks Containers */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
 }
 
-h1 {
-    color: #003366;
-    margin-top: 0;
+.screen {
+    width: 100%;
+    max-width: 500px;
 }
 
+.glass-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+}
+
+.glass-container h1,
+.glass-container h2 {
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* Inputs and Buttons */
 input {
-    padding: 10px;
-    width: calc(100% - 110px);
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 button {
-    padding: 10px 15px;
-    background-color: #003366;
-    color: white;
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
     border: none;
-    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
 }
 
-button:hover {
-    background-color: #00509e;
+.btn-primary {
+    background: #ffffff;
+    color: #667EDE;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    width: auto;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Tasks specific */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.input-group input {
+    margin-bottom: 0;
+}
+
+.input-group button {
+    width: auto;
+    padding: 0 25px;
 }
 
 #tasks {
     list-style: none;
-    padding: 0;
+    text-align: left;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+#tasks::-webkit-scrollbar {
+    width: 6px;
+}
+
+#tasks::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
 }
 
 li {
-    margin-top: 10px;
-    padding: 10px;
-    background: #e0e0e0;
-    border-radius: 4px;
-    color: #003366;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 12px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.3s ease;
+    word-break: break-all;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delete-btn {
+    background: rgba(255, 60, 60, 0.8);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    transition: background 0.3s, transform 0.2s;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background: rgba(255, 0, 0, 1);
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group button {
+        width: 100%;
+    }
 }
